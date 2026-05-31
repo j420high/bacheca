@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#3e2f5b">
+  <meta name="description" content="Schedario appunti offline: salva, cerca e gestisci le tue note anche senza connessione.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="bacheca_appunti_v3.css">
+  <title>Schedario Appunti</title>
+</head>
+<body>
+
+<div class="app">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Bacheca appunti con salvataggio locale</h2>
+  <div class="header">
+    <div class="logo">schedario joint<span class="logo-dot">.</span><span class="logo-sub">i tuoi appunti</span></div>
+    <div class="hr"></div>
+  </div>
+  <div class="toolbar">
+    <div class="sw">🔍<input class="si" id="sIn" type="text" placeholder="Cerca titolo, testo, tag…"></div>
+    <div class="vt">
+      <button class="vb active" id="vG" title="Griglia">🔳</button>
+      <button class="vb" id="vL" title="Lista">📋</button>
+    </div>
+    <select class="ss" id="srt">
+      <option value="recent">Più recenti</option>
+      <option value="old">Più vecchi</option>
+      <option value="alpha">A–Z</option>
+      <option value="pinned">Fissati prima</option>
+    </select>
+    <button class="eb" id="expBtn">⬇️ .txt</button>
+    <button class="ab" id="installBtn" style="display:none">📲 Installa</button>
+    <button class="ab" id="addBtn">➕ Nuovo</button>
+  </div>
+  <div class="fr" id="fRow"></div>
+  <div class="sb" id="sBr"></div>
+  <div class="ng vc" id="grid"></div>
+</div>
+
+<div class="ov" id="modal" style="display:none">
+  <div class="mo">
+    <div class="mh"><div class="mti" id="mTit">Nuovo appunto</div><button class="mx" id="mCl">✖️</button></div>
+    <div class="gr2">
+      <div class="fl"><label>Titolo *</label><input class="fi" id="fTit" placeholder="Titolo…"></div>
+      <div class="fl"><label>Categoria</label>
+        <select class="fi" id="fCat">
+          <option value="studio">📚 Studio</option>
+          <option value="lavoro">💼 Lavoro</option>
+          <option value="idee">💡 Idee</option>
+          <option value="personale">🌿 Personale</option>
+          <option value="todo">✅ To-do</option>
+          <option value="ricette">🍳 Ricette</option>
+          <option value="viaggi">✈️ Viaggi</option>
+          <option value="altro">📌 Altro</option>
+        </select>
+      </div>
+    </div>
+    <div class="fl"><label>Contenuto</label><textarea class="ft" id="fBod" placeholder="Scrivi qui…"></textarea></div>
+    <div class="gr2">
+      <div class="fl"><label>Tag (virgola)</label><input class="fi" id="fTag" placeholder="es. fisica, cap3"></div>
+      <div class="fl"><label>Priorità</label>
+        <select class="fi" id="fPri">
+          <option value="normale">Normale</option>
+          <option value="alta">🔴 Alta</option>
+          <option value="media">🟡 Media</option>
+          <option value="bassa">🟢 Bassa</option>
+        </select>
+      </div>
+    </div>
+    <div class="fl"><label>Icona</label><div class="ip" id="iP"></div></div>
+    <div class="gr2">
+      <div class="fl"><label>Colore accento</label><div class="cp" id="cP"></div></div>
+      <div class="fl"><label>Font titolo</label><div class="fnp" id="fnP"></div></div>
+    </div>
+    <div class="fl"><label>Nota a piè scheda</label><input class="fi" id="fFoo" placeholder="es. fonte, pagina, link…"></div>
+    <div class="mf">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2);cursor:pointer;margin-right:auto">
+        <input type="checkbox" id="fPin"> Fissa in cima
+      </label>
+      <button class="bs" id="mCan">Annulla</button>
+      <button class="bp" id="mSav">Salva appunto</button>
+    </div>
+  </div>
+</div>
+
+<div class="cov" id="cDel" style="display:none">
+  <div class="cb2">
+    <div style="font-size:36px">🗑️</div>
+    <h3>Eliminare l'appunto?</h3>
+    <p id="cMsg">Questa azione non può essere annullata.</p>
+    <div class="cbt">
+      <button class="bs" id="cNo">Annulla</button>
+      <button class="dc" id="cYes">Sì, elimina</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="saved-badge" id="savedBadge">💾 salvato in locale</div>
+
+<script src="bacheca_appunti_v3.js"></script>
+</body>
+</html>

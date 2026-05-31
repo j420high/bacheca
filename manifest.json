@@ -1,0 +1,23 @@
+{
+  "name": "Schedario Appunti",
+  "short_name": "Schedario",
+  "description": "App per salvare e consultare appunti offline con ricerca e categorie.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#3e2f5b",
+  "theme_color": "#3e2f5b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
